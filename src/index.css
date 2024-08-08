@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
+/* * {
     border: 1px solid red;
+} */
+
+@layer components {
+    .btn {
+        @apply px-4 py-2 bg-[#716A8A] text-black font-semibold text-opacity-80 rounded-xl flex items-center justify-center transition hover:scale-105 active:scale-95;
+        box-shadow: #484553 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    }
+
+    .btn:active {
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    }
+
 }

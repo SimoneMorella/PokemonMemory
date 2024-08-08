@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
-import Card from './components/Card'
-
+import GamePage from './components/GamePage'
+import StartPage from './components/StartPage'
+// is better if I use the api with pokedex maybe idk instead of generation I'll se later
 
 function App() {
   const [pokemonNameList, setPokemonNameList] = useState([])
   const [generation, setGeneration] = useState("")
-  const [cardLoaded, setCardLoaded] = useState(false);
+  const [gameLoad, setGameLoad] = useState(false);
 
 
   useEffect(() => {
@@ -18,7 +19,7 @@ function App() {
           const data = await response.json();
           const extractedNames = data.pokemon_species.map(pokemon => pokemon.name);
           setPokemonNameList(extractedNames);
-          setCardLoaded(true);
+          setGameLoad(true);
         } catch(error) {
           console.log(error)
         }
@@ -31,23 +32,24 @@ function App() {
   },[generation])
 
   function handleGen(e) {
-    console.log(e.target.value)
+    console.log(e.target)
     setGeneration(e.target.value)
   }
-
   return (
-    <div className='flex flex-col gap-3'>
-      <h1>ciao bro this is a pokemon memory game</h1>
-      <div>
-        <button value="1" onClick={handleGen}>Gen 1</button>
-        <button value="2" onClick={handleGen}>Gen 2</button>
-        <button value="3" onClick={handleGen}>Gen 3</button>
-        <button value="4" onClick={handleGen}>Gen 4</button>
-        <button value="5" onClick={handleGen}>Gen 5</button>
-        <button value="6" onClick={handleGen}>Gen 6</button>
-      </div>
-      {cardLoaded && <Card pokemonList={pokemonNameList}/>}
-    </div>
+    <StartPage handleGen={handleGen} />
+    // <div className='flex flex-col gap-3'>
+
+    //   <h1>ciao bro this is a pokemon memory game</h1>
+    //   <div>
+    //     <button value="1" onClick={handleGen}>Gen 1</button>
+    //     <button value="2" onClick={handleGen}>Gen 2</button>
+    //     <button value="3" onClick={handleGen}>Gen 3</button>
+    //     <button value="4" onClick={handleGen}>Gen 4</button>
+    //     <button value="5" onClick={handleGen}>Gen 5</button>
+    //     <button value="6" onClick={handleGen}>Gen 6</button>
+    //   </div>
+    //   {gameLoad && <GamePage pokemonList={pokemonNameList}/>}
+    // </div>
   )
 }
 

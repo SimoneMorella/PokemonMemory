@@ -5,7 +5,14 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'mayPoke': "url('./src/assets/gengar.gif')"
+      },
+      fontFamily: {
+        'fredoka': ["Fredoka", "sans-serif"]
+      }
+    },
   },
   plugins: [],
 }
