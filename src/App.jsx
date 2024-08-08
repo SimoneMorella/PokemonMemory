@@ -2,12 +2,15 @@ import { useState, useEffect } from 'react'
 import GamePage from './components/GamePage'
 import StartPage from './components/StartPage'
 // is better if I use the api with pokedex maybe idk instead of generation I'll se later
+//put a default value for region and difficulty or start bug everything!
 
 function App() {
-  const [pokemonNameList, setPokemonNameList] = useState([])
-  const [generation, setGeneration] = useState("")
+  const [pokemonNameList, setPokemonNameList] = useState([]);
+  const [generation, setGeneration] = useState("1");
+  const [difficulty, setDifficulty] = useState("Easy");
   const [gameLoad, setGameLoad] = useState(false);
 
+  // don't know if I have to do gameLoad and LoadingLoad to start a loading.... I'll think about that.
 
   useEffect(() => {
     let ignore = true;
@@ -32,11 +35,20 @@ function App() {
   },[generation])
 
   function handleGen(e) {
-    console.log(e.target)
+    console.log(e.target.value)
     setGeneration(e.target.value)
   }
+
+  function handleDifficulty(e) {
+    setDifficulty(e.target.value);
+  }
+
   return (
-    <StartPage handleGen={handleGen} />
+    <StartPage 
+      handleGen={handleGen} 
+      generation={generation} 
+      handleDifficulty={handleDifficulty}
+      difficulty={difficulty} />
     // <div className='flex flex-col gap-3'>
 
     //   <h1>ciao bro this is a pokemon memory game</h1>
