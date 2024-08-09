@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import GamePage from './components/GamePage'
 import StartPage from './components/StartPage'
+import LoadingPage from './components/LoeadingPage';
 // is better if I use the api with pokedex maybe idk instead of generation I'll se later
 //put a default value for region and difficulty or start bug everything!
 
@@ -9,6 +10,7 @@ function App() {
   const [generation, setGeneration] = useState("1");
   const [difficulty, setDifficulty] = useState("Easy");
   const [gameLoad, setGameLoad] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // don't know if I have to do gameLoad and LoadingLoad to start a loading.... I'll think about that.
 
@@ -22,7 +24,6 @@ function App() {
           const data = await response.json();
           const extractedNames = data.pokemon_species.map(pokemon => pokemon.name);
           setPokemonNameList(extractedNames);
-          setGameLoad(true);
         } catch(error) {
           console.log(error)
         }
@@ -43,12 +44,27 @@ function App() {
     setDifficulty(e.target.value);
   }
 
+  function handleGameLoad() {
+    setGameLoad(true);
+  }
+
   return (
-    <StartPage 
-      handleGen={handleGen} 
-      generation={generation} 
-      handleDifficulty={handleDifficulty}
-      difficulty={difficulty} />
+    <>
+    {!isLoading 
+    ? <StartPage 
+        handleGen={handleGen} 
+        generation={generation} 
+        handleDifficulty={handleDifficulty}
+        difficulty={difficulty}
+        setIsLoading={setIsLoading} />
+    : (
+      !gameLoad 
+      ? <LoadingPage isLoading={isLoading} setGameLoad={handleGameLoad}/> 
+      : <GamePage pokemonList={pokemonNameList}/>
+    )
+   }
+    </>
+
     // <div className='flex flex-col gap-3'>
 
     //   <h1>ciao bro this is a pokemon memory game</h1>

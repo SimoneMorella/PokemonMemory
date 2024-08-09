@@ -1,7 +1,7 @@
 import logo from "../assets/pokelogo.png";
 import logo2 from "../assets/logo2.png";
 
-export default function StartPage({handleGen, generation, handleDifficulty, difficulty}) {
+export default function StartPage({handleGen, generation, handleDifficulty, difficulty, setIsLoading}) {
 
 
   return (
@@ -33,7 +33,7 @@ export default function StartPage({handleGen, generation, handleDifficulty, diff
                     </div>
                 </div>
                 <div className="w-full mt-5">
-                    <button className="btn w-full bg-[#EF5262]">Start Game</button>
+                    <button className="btn startBtn w-full bg-[#EF5262]" onClick={setIsLoading}>Start Game</button>
                 </div>
             </div>
             
