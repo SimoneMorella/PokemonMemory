@@ -9,9 +9,9 @@ export default function Card({pokemon}) {
     console.log(types)
 
     return (
-        <div className="text-[#D1CCE3] h-[180px] flex flex-col gap-2 font-fredoka rounded-xl bg-black bg-opacity-90 px-4 py-3">
+        <div className="text-[#D1CCE3] h-[180px] flex flex-col gap-2 font-fredoka rounded-xl bg-black bg-opacity-90 px-3 py-4 border border-[#51467c] ">
             <div className="flex justify-center items-center">
-                <img src={pokemon.images.other.showdown.front_default} alt={pokemon.name} className="w-[78px] h-[86px] bg-black" />
+                <img src={pokemon.images.other['official-artwork'].front_default} alt={pokemon.name} className="h-[90px] bg-black" />
             </div>
             <div className="flex flex-col items-center gap-1 justify-between">
                 <h5 className="font-semibold text-[17px]">{capitalize(pokemon.name)}</h5>

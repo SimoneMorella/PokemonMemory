@@ -11,6 +11,8 @@ function App() {
   const [difficulty, setDifficulty] = useState("Easy");
   const [gameLoad, setGameLoad] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [pokemonArray, setPokemonArray] = useState([]);
+
 
   // don't know if I have to do gameLoad and LoadingLoad to start a loading.... I'll think about that.
 
@@ -61,25 +63,14 @@ function App() {
       !gameLoad 
       ? <LoadingPage 
           isLoading={isLoading} 
-          setGameLoad={handleGameLoad}/> 
-      : <GamePage pokemonList={pokemonNameList}/>
+          setGameLoad={handleGameLoad}
+          setPokemonArray={setPokemonArray}
+          pokemonList={pokemonNameList}
+          difficulty={difficulty}/> 
+      : <GamePage pokemonArray={pokemonArray}/>
     )
    }
     </>
-
-    // <div className='flex flex-col gap-3'>
-
-    //   <h1>ciao bro this is a pokemon memory game</h1>
-    //   <div>
-    //     <button value="1" onClick={handleGen}>Gen 1</button>
-    //     <button value="2" onClick={handleGen}>Gen 2</button>
-    //     <button value="3" onClick={handleGen}>Gen 3</button>
-    //     <button value="4" onClick={handleGen}>Gen 4</button>
-    //     <button value="5" onClick={handleGen}>Gen 5</button>
-    //     <button value="6" onClick={handleGen}>Gen 6</button>
-    //   </div>
-    //   {gameLoad && <GamePage pokemonList={pokemonNameList}/>}
-    // </div>
   )
 }
 
