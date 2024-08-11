@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import Card from "./Card";
+import Header from "./Header";
+
+
+// try to handle the error... later we say
 
 export default function GamePage({pokemonList}) {
     const [pokemonArray, setPokemonArray] = useState([]);
-    const maxLength = 3;
+    const maxLength = 6;
 
     useEffect(() => {
         if (pokemonList.length === 0) return;
@@ -26,6 +30,7 @@ export default function GamePage({pokemonList}) {
                 id: data.id,
                 name: data.name,
                 images: data.sprites,
+                types: data.types,
                 clicked: false
               });
             } catch (error) {
@@ -38,17 +43,21 @@ export default function GamePage({pokemonList}) {
     
         fetchPokemonData();
       }, [pokemonList]);
-    
+    //later change the structure and the gap removed maybe
     console.log(pokemonArray)
     return (
-        <div>
-            {pokemonArray.map(pokemon => {
-                return (
-                    <Card 
-                    key={pokemon.id}
-                    pokemon={pokemon} />
-                )
-            })}
+        <div className="flex flex-col w-full h-svh px-4 py-6 gap-32">
+            <Header />
+            <div className="self-center grid grid-cols-3 gap-3">
+              {pokemonArray.map(pokemon => {
+                  return (
+                      <Card 
+                      key={pokemon.id}
+                      pokemon={pokemon} />
+                  )
+              })}
+            </div>
+ 
         </div>
     )
 }

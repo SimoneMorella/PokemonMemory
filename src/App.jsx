@@ -59,7 +59,9 @@ function App() {
         setIsLoading={setIsLoading} />
     : (
       !gameLoad 
-      ? <LoadingPage isLoading={isLoading} setGameLoad={handleGameLoad}/> 
+      ? <LoadingPage 
+          isLoading={isLoading} 
+          setGameLoad={handleGameLoad}/> 
       : <GamePage pokemonList={pokemonNameList}/>
     )
    }

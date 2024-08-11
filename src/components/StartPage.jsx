@@ -23,7 +23,7 @@ export default function StartPage({handleGen, generation, handleDifficulty, diff
             className="relative"
             initial={{opacity: 0, scale: 0}}
             animate={{opacity: 1, scale: [0, 1, 1.05, 1.02, 1]}}
-            transition={{duration: 0.8}}
+            transition={{duration: 0.7}}
             exit={{opacity: 0, scale: 0}}
             onAnimationComplete={() => setFirstAnimComplete(true)}>
             <img src={logo} alt="pokemon logo" className="max-w-[350px] " />
