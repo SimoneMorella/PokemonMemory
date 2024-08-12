@@ -1,15 +1,12 @@
 import { capitalize, pokemonTypes } from "./utils"
 
 
-
-// pokemon.images.other['official-artwork'].front_default
-export default function Card({pokemon}) {
-   
+export default function Card({pokemon, handleClick}) {
     const types = pokemon.types.map(type => type.type.name);
-    console.log(types)
-
     return (
-        <div className="text-[#D1CCE3] h-[180px] flex flex-col gap-2 font-fredoka rounded-xl bg-black bg-opacity-90 px-3 py-4 border border-[#51467c] ">
+        <div
+            onClick={() => handleClick(pokemon)}
+            className="text-[#D1CCE3] h-[180px] flex flex-col gap-2 font-fredoka rounded-xl bg-black bg-opacity-90 px-3 py-4 border border-[#51467c] ">
             <div className="flex justify-center items-center">
                 <img src={pokemon.images.other['official-artwork'].front_default} alt={pokemon.name} className="h-[90px] bg-black" />
             </div>
@@ -23,7 +20,6 @@ export default function Card({pokemon}) {
                     }
                     )}
                 </div>
-                {/* <div><img src={pokemon.images.other.showdown.front_default} alt={pokemon.name} width={35}/></div> */}
             </div>
         </div>
     )

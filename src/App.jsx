@@ -50,6 +50,15 @@ function App() {
     setGameLoad(true);
   }
 
+  function shuffleCards() {
+    let randArr = [];
+    while (randArr.length < pokemonArray.length) {
+      let randNum = Math.floor(Math.random() * pokemonArray.length);
+      if (!randArr.includes(pokemonArray[randNum])) randArr.push(pokemonArray[randNum]);
+    }
+    setPokemonArray(randArr);
+  }
+
   return (
     <>
     {!isLoading 
@@ -67,7 +76,9 @@ function App() {
           setPokemonArray={setPokemonArray}
           pokemonList={pokemonNameList}
           difficulty={difficulty}/> 
-      : <GamePage pokemonArray={pokemonArray}/>
+      : <GamePage 
+          pokemonArray={pokemonArray}
+          shuffleCards={shuffleCards}/>
     )
    }
     </>
