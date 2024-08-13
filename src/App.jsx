@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import GamePage from './components/GamePage'
 import StartPage from './components/StartPage'
 import LoadingPage from './components/LoeadingPage';
+import Footer from './components/Footer';
 // is better if I use the api with pokedex maybe idk instead of generation I'll se later
 //put a default value for region and difficulty or start bug everything!
 
@@ -81,6 +82,7 @@ function App() {
           shuffleCards={shuffleCards}/>
     )
    }
+   <Footer />
     </>
   )
 }

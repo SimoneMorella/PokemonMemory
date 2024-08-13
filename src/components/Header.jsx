@@ -1,6 +1,7 @@
 import logo from "../assets/pokelogo.png";
 import logo2 from "../assets/logo2.png";
 
+
 export default function Header({score}) {
 
     return (
