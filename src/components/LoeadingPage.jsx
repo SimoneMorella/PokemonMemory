@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function LoadingPage({isLoading, setGameLoad, pokemonList, setPokemonArray, difficulty}) {
   const [dots, setDots] = useState(1);
   const [isDataFetched, setIsDataFetched] = useState(false);
+  const [isExiting, setIsExiting] = useState(false)
   const dotString = ".".repeat(dots);
 
 
@@ -53,11 +54,14 @@ export default function LoadingPage({isLoading, setGameLoad, pokemonList, setPok
         };
     
         fetchPokemonData();
-      }, [isLoading, pokemonList, setPokemonArray]);
+      }, [isLoading, pokemonList, setPokemonArray, difficulty]);
 
       useEffect(() => {
         if (isDataFetched) {
-          const transitionDelay = 4000;
+          setTimeout(() => {
+            setIsExiting(true)
+          }, 2000)
+          const transitionDelay = 2500;
           const timer = setTimeout(() => {
             setGameLoad(true);
           }, transitionDelay);
@@ -68,15 +72,18 @@ export default function LoadingPage({isLoading, setGameLoad, pokemonList, setPok
 
     return (
       <AnimatePresence>
-        {isLoading && (<motion.div 
-        className="text-[#D1CCE3] relative pb-5 font-fredoka rounded-xl bg-black bg-opacity-60 flex flex-col gap-3 items-center max-w-[250px]"
-        initial={{opacity: 0, scale: 0}}
-        animate={{opacity: 1, scale: [0, 1, 1.05, 1.02, 1]}}
-        transition={{duration: 0.8}}
-        exit={{opacity: 0, scale: 0}}>
+        {!isExiting && (
+          <div>
+        <motion.div 
+          className="text-[#D1CCE3] relative pb-5 font-fredoka rounded-xl bg-black bg-opacity-60 flex flex-col gap-3 items-center max-w-[250px]"
+          initial={{opacity: 0, scale: 0}}
+          animate={{opacity: 1, scale: [0, 1, 1.05, 1.02, 1]}}
+          transition={{duration: 0.7}}
+          exit={{opacity: 0, scale: 0, transition: {duration: 0.3}}}>
           <img src={pokegif} alt="" className="" />
           <h4 className="text-xl font-semibold absolute bottom-3 w-24">Loading {dotString}</h4>
-        </motion.div>)}
+        </motion.div>
+          </div>)}
       </AnimatePresence>
 
     )

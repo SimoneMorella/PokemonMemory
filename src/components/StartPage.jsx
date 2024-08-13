@@ -24,7 +24,7 @@ export default function StartPage({handleGen, generation, handleDifficulty, diff
             initial={{opacity: 0, scale: 0}}
             animate={{opacity: 1, scale: [0, 1, 1.05, 1.02, 1]}}
             transition={{duration: 0.7}}
-            exit={{opacity: 0, scale: 0}}
+            exit={{opacity: 0, scale: 0, transition: {duration: 0.3}}}
             onAnimationComplete={() => setFirstAnimComplete(true)}>
             <img src={logo} alt="pokemon logo" className="max-w-[350px] " />
             <img src={logo2} alt="pokemon logo" className="max-w-[200px] absolute right-0 -bottom-7 rotate-[4deg]" />
@@ -35,7 +35,7 @@ export default function StartPage({handleGen, generation, handleDifficulty, diff
             initial={{opacity: 0, scale: 0}}
             animate={firstAnimComplete && {opacity: 1, scale: [0, 1, 1.05, 1.02, 1]}}
             transition={{duration: 0.7}}
-            exit={{opacity: 0, scale: 0}}>
+            exit={{opacity: 0, scale: 0, transition: {duration: 0.3}}}>
               <div id="startMenuContent" className="px-6 py-5 flex flex-col gap-6">
                   <div className="flex flex-col gap-3">
                       <h3 className="font-bold text-xl text-center">Choose Pokemon Region:</h3>
