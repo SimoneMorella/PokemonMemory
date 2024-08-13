@@ -3,6 +3,7 @@ import Card from "./Card";
 import Header from "./Header";
 import GameOver from "./GameOver";
 import { motion, AnimatePresence } from "framer-motion";
+import { Tooltip } from "react-tooltip";
 
 
 // try to handle the error... later we say
@@ -66,12 +67,31 @@ export default function GamePage({pokemonArray, shuffleCards}) {
                 })}
                 </motion.div>
                 <motion.div 
-                className="text-[#D1CCE3] font-fredoka bg-black px-5 py-2 rounded-xl font-semibold text-lg -mt-16"
+                className="-mt-16 flex gap-2"
                 initial={{opacity: 0, scale: 0}}
                 animate={secondAnimComplete && {opacity: 1, scale: [0, 1, 1.05, 1.02, 1]}}
                 transition={{duration: 0.7}}
                 exit={{opacity: 0, scale: 0, transition: {duration: 0.3}}}>
-                    <span>{score} </span>/ <span>{roundToPlay}</span>
+                    <div className="text-[#D1CCE3] ml-10 font-fredoka bg-black bg-opacity-80 px-5 py-2 rounded-xl font-semibold text-lg ">
+                        <span>{score} </span>/ <span>{roundToPlay}</span>
+                    </div>
+                    <div 
+                        className="text-[#D1CCE3] font-fredoka bg-black bg-opacity-80 flex justify-center items-center px-4 rounded-full font-semibold text-lg "
+                        data-tooltip-id="help"
+                        data-tooltip-content="Don't click on the same card twice!"
+                        data-tooltip-place="bottom">
+                        ?
+                        <Tooltip 
+                            id="help"
+                            style={{
+                                backgroundColor: "rgba(0, 0, 0, 0.9)",
+                                color: "#D1CCE3"
+
+                            
+                            }}/>
+                    </div>
+                    
+
                 </motion.div>
                 {result !== "" && 
                     <GameOver
