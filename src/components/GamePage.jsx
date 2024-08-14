@@ -10,6 +10,7 @@ import { Tooltip } from "react-tooltip";
 
 export default function GamePage({pokemonArray, shuffleCards}) {
     const [ignoreClick, setIgnoreClick] = useState(false);
+    const [isFlipped, setIsFlipped] = useState(false);
     const [score, setScore] = useState(0);
     const [result, setResult] = useState("");
     const [firstAnimComplete, setFirstAnimComplete] = useState(false);
@@ -23,8 +24,9 @@ export default function GamePage({pokemonArray, shuffleCards}) {
     }
 
     function handleClick(pokemon) {
+        setIgnoreClick(true);
         if (ignoreClick) return;
-        setScore(score + 1);
+        if (!pokemon.clicked) setScore(score + 1);
         let outcome = clickLogic(pokemon);
         if (outcome !== "") {
             setResult(outcome);
@@ -32,7 +34,17 @@ export default function GamePage({pokemonArray, shuffleCards}) {
             return;
         }
         pokemon.clicked = true;
-        shuffleCards();
+        
+        setIsFlipped(true);
+        setTimeout(() => {
+            shuffleCards();
+        }, 800)
+        setTimeout(() => {
+            setIsFlipped(false);
+            setIgnoreClick(false);
+        },1200)
+        
+        
         
     }
 
@@ -62,7 +74,8 @@ export default function GamePage({pokemonArray, shuffleCards}) {
                         <Card 
                         key={pokemon.id}
                         pokemon={pokemon}
-                        handleClick={handleClick} />
+                        handleClick={handleClick}
+                        isFlipped={isFlipped} />
                     )
                 })}
                 </motion.div>
@@ -76,7 +89,7 @@ export default function GamePage({pokemonArray, shuffleCards}) {
                         <span>{score} </span>/ <span>{roundToPlay}</span>
                     </div>
                     <div 
-                        className="text-[#D1CCE3] font-fredoka bg-black bg-opacity-80 flex justify-center items-center px-4 rounded-full font-semibold text-lg "
+                        className="text-[#D1CCE3] cursor-pointer font-fredoka bg-black bg-opacity-80 flex justify-center items-center px-4 rounded-full font-semibold text-lg "
                         data-tooltip-id="help"
                         data-tooltip-content="Don't click on the same card twice!"
                         data-tooltip-place="bottom">
@@ -85,9 +98,7 @@ export default function GamePage({pokemonArray, shuffleCards}) {
                             id="help"
                             style={{
                                 backgroundColor: "rgba(0, 0, 0, 0.9)",
-                                color: "#D1CCE3"
-
-                            
+                                color: "#D1CCE3"   
                             }}/>
                     </div>
                     

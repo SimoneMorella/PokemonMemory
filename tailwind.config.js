@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'mayPoke': "url('./src/assets/gengar.gif')"
+        'mayPoke': "url('./src/assets/gengar.gif')",
+        'pokeCardBg': "url('./src/assets/backCard.webp')"
       },
       fontFamily: {
         'fredoka': ["Fredoka", "sans-serif"]
