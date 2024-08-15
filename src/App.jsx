@@ -79,7 +79,9 @@ function App() {
           difficulty={difficulty}/> 
       : <GamePage 
           pokemonArray={pokemonArray}
-          shuffleCards={shuffleCards}/>
+          shuffleCards={shuffleCards}
+          setIsLoading={setIsLoading}
+          setGameLoad={setGameLoad}/>
     )
    }
    <Footer />

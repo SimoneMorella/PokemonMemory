@@ -1,8 +1,7 @@
-import { motion, AnimatePresence } from "framer-motion";
-export default function GameOver({result}) {
+import { motion} from "framer-motion";
+export default function GameOver({result, restartGame, goMainMenu}) {
     return (
         <>
-            <AnimatePresence>
                 <motion.div
                     className={`${result === "win" ? 'bg-winGengar' : 'bg-loseGengar'} bg-cover z-[1] h-[200px] w-[290px] rounded-xl text-[#D1CCE3] absolute top-1/3 bg-black px-4 py-6 flex flex-col justify-between items-center shadow-2xl`}
                     initial={{opacity: 0, scale: 0}}
@@ -17,8 +16,8 @@ export default function GameOver({result}) {
                         }
                     </div>
                     <div className="w-full grid grid-cols-2 gap-3">
-                        <button className="btn">Restart</button>
-                        <button className="btn startBtn bg-[#EF5262]">Main Menu</button>
+                        <button className="btn" onClick={restartGame}>Restart</button>
+                        <button className="btn startBtn bg-[#EF5262]" onClick={goMainMenu}>Main Menu</button>
                     </div>
                 </motion.div>
                 <motion.div 
@@ -26,10 +25,8 @@ export default function GameOver({result}) {
                     initial={{opacity: 0}}
                     animate={{opacity: 1}}
                     transition={{duration: 0.3}}
-                    exit={{opacity: 0, scale: 0, transition: {duration: 0.3}}}>
+                    exit={{opacity: 0, transition: {duration: 0.3}}}>
                 </motion.div>
-            </AnimatePresence>
-            
         </>
  
     )

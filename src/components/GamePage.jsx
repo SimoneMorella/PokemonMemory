@@ -6,15 +6,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Tooltip } from "react-tooltip";
 
 
-// try to handle the error... later we say
-
-export default function GamePage({pokemonArray, shuffleCards}) {
+export default function GamePage({pokemonArray, shuffleCards, setGameLoad, setIsLoading}) {
     const [ignoreClick, setIgnoreClick] = useState(false);
     const [isFlipped, setIsFlipped] = useState(false);
     const [score, setScore] = useState(0);
     const [result, setResult] = useState("");
     const [firstAnimComplete, setFirstAnimComplete] = useState(false);
     const [secondAnimComplete, setSecondAnimComplete] = useState(false);
+    const [isExiting, setIsExiting] = useState(false);
     const roundToPlay = pokemonArray.length;
 
     function clickLogic(pokemon) {
@@ -42,16 +41,40 @@ export default function GamePage({pokemonArray, shuffleCards}) {
         setTimeout(() => {
             setIsFlipped(false);
             setIgnoreClick(false);
-        },1500)
-        
-        
-        
+        },1500)    
+    }
+
+    function restartGame() {
+        setIsExiting(true);
+        setTimeout(() => {
+            setScore(0);
+            setFirstAnimComplete(false);
+            setSecondAnimComplete(false);
+            setGameLoad(false);
+            setIsLoading(true);
+            setIsExiting(false);
+        }, 800)
+
+    }
+
+    function goMainMenu() {
+        setIsExiting(true);
+        setTimeout(() => {
+            setScore(0);
+            setResult("");
+            setFirstAnimComplete(false);
+            setSecondAnimComplete(false);
+            setGameLoad(false);
+            setIsLoading(false);
+            setIsExiting(false);
+        }, 500)
     }
 
     //later change the structure and the gap removed maybe
     return (
         <AnimatePresence>
-            <div className="flex flex-col w-full h-svh px-4 py-6 gap-24 items-center">
+            {!isExiting && 
+            (<div className="flex flex-col w-full h-svh px-4 py-6 gap-24 items-center">
                 <motion.div 
                     className="w-full"
                     initial={{opacity: 0, scale: 0}}
@@ -106,8 +129,11 @@ export default function GamePage({pokemonArray, shuffleCards}) {
                 </motion.div>
                 {result !== "" && 
                     <GameOver
-                        result={result}/>}
-            </div>
+                        result={result}
+                        restartGame={restartGame}
+                        goMainMenu={goMainMenu}
+                        />}
+            </div>)}
         </AnimatePresence>
 
     )

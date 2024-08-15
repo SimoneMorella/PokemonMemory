@@ -75,7 +75,7 @@ export default function LoadingPage({isLoading, setGameLoad, pokemonList, setPok
         {!isExiting && (
           <div>
         <motion.div 
-          className="text-[#D1CCE3] relative pb-5 font-fredoka rounded-xl bg-black bg-opacity-60 flex flex-col gap-3 items-center max-w-[250px]"
+          className="text-[#D1CCE3] relative pb-5 font-fredoka rounded-xl bg-black bg-opacity-60 flex flex-col gap-3 items-center max-w-[200px] h-[200px]"
           initial={{opacity: 0, scale: 0}}
           animate={{opacity: 1, scale: [0, 1, 1.05, 1.02, 1]}}
           transition={{duration: 0.7}}
