@@ -73,7 +73,7 @@ export default function GamePage({pokemonArray, shuffleCards, setGameLoad, setIs
     return (
         <AnimatePresence>
             {!isExiting && 
-            (<div className="flex flex-col w-full h-svh px-4 sm:px-10 lg:px-20 xl:px-28 2xl:px-44 py-2 min-[412px]:py-6 gap-7 min-[390px]:gap-24 sm:gap-14 2xl:gap-7 items-center">
+            (<div className="flex flex-col w-full h-svh px-4 sm:px-10 lg:px-20 xl:px-28 2xl:px-44 py-2 min-[412px]:py-3 gap-7 min-[390px]:gap-11 sm:gap-14 2xl:gap-7 items-center">
                 <motion.div 
                     className="w-full"
                     initial={{opacity: 0, scale: 0}}
@@ -102,7 +102,7 @@ export default function GamePage({pokemonArray, shuffleCards, setGameLoad, setIs
                 })}
                 </motion.div>
                 <motion.div 
-                className="-mt-3 min-[390px]:-mt-16 sm:-mt-5 2xl:-mt-3 flex gap-2"
+                className="-mt-3 min-[390px]:-mt-8 sm:-mt-5 2xl:-mt-3 flex gap-2"
                 initial={{opacity: 0, scale: 0}}
                 animate={secondAnimComplete && {opacity: 1, scale: [0, 1, 1.05, 1.02, 1]}}
                 transition={{duration: 0.7}}
