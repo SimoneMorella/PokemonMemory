@@ -38,11 +38,11 @@ export default function GamePage({pokemonArray, shuffleCards}) {
         setIsFlipped(true);
         setTimeout(() => {
             shuffleCards();
-        }, 800)
+        }, 1000)
         setTimeout(() => {
             setIsFlipped(false);
             setIgnoreClick(false);
-        },1200)
+        },1500)
         
         
         
@@ -63,7 +63,7 @@ export default function GamePage({pokemonArray, shuffleCards}) {
                     score={score}/>
                 </motion.div>
                 <motion.div 
-                className="self-center flex flex-wrap justify-center gap-3"
+                className="self-center flex flex-wrap justify-center gap-2"
                     initial={{opacity: 0, scale: 0}}
                     animate={firstAnimComplete && {opacity: 1, scale: [0, 1, 1.05, 1.02, 1]}}
                     transition={{duration: 0.7}}
