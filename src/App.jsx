@@ -3,8 +3,7 @@ import GamePage from './components/GamePage'
 import StartPage from './components/StartPage'
 import LoadingPage from './components/LoeadingPage';
 import Footer from './components/Footer';
-// is better if I use the api with pokedex maybe idk instead of generation I'll se later
-//put a default value for region and difficulty or start bug everything!
+
 
 function App() {
   const [pokemonNameList, setPokemonNameList] = useState([]);
@@ -14,8 +13,6 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [pokemonArray, setPokemonArray] = useState([]);
 
-
-  // don't know if I have to do gameLoad and LoadingLoad to start a loading.... I'll think about that.
 
   useEffect(() => {
     let ignore = true;

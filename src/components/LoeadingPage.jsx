@@ -75,13 +75,13 @@ export default function LoadingPage({isLoading, setGameLoad, pokemonList, setPok
         {!isExiting && (
           <div>
         <motion.div 
-          className="text-[#D1CCE3] relative pb-5 font-fredoka rounded-xl bg-black bg-opacity-60 flex flex-col gap-3 items-center max-w-[200px] h-[200px]"
+          className="text-[#D1CCE3] relative pb-5 font-fredoka rounded-xl bg-black bg-opacity-60 flex flex-col gap-2 items-center max-w-[180px] md:max-w-[250px] h-[180px] md:h-[250px]"
           initial={{opacity: 0, scale: 0}}
           animate={{opacity: 1, scale: [0, 1, 1.05, 1.02, 1]}}
           transition={{duration: 0.7}}
           exit={{opacity: 0, scale: 0, transition: {duration: 0.3}}}>
           <img src={pokegif} alt="" className="" />
-          <h4 className="text-xl font-semibold absolute bottom-3 w-24">Loading {dotString}</h4>
+          <h4 className="text-xl md:text-2xl font-semibold absolute bottom-3 md:bottom-8 w-24 md:w-28">Loading {dotString}</h4>
         </motion.div>
           </div>)}
       </AnimatePresence>

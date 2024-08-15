@@ -3,7 +3,7 @@ export default function GameOver({result, restartGame, goMainMenu}) {
     return (
         <>
                 <motion.div
-                    className={`${result === "win" ? 'bg-winGengar' : 'bg-loseGengar'} bg-cover z-[1] h-[200px] w-[290px] rounded-xl text-[#D1CCE3] absolute top-1/3 bg-black px-4 py-6 flex flex-col justify-between items-center shadow-2xl`}
+                    className={`${result === "win" ? 'bg-winGengar' : 'bg-loseGengar'} bg-cover z-[1] h-[200px] min-[390px]:w-[290px] sm:h-[240px] sm:w-[340px] 2xl:h-[300px] 2xl:w-[400px] rounded-xl text-[#D1CCE3] absolute top-1/3 bg-black px-4 py-6 flex flex-col justify-between items-center shadow-2xl`}
                     initial={{opacity: 0, scale: 0}}
                     animate={{opacity: 1, scale: [0, 1, 1.05, 1.02, 1]}}
                     transition={{duration: 0.7}}

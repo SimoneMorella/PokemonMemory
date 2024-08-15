@@ -70,11 +70,10 @@ export default function GamePage({pokemonArray, shuffleCards, setGameLoad, setIs
         }, 500)
     }
 
-    //later change the structure and the gap removed maybe
     return (
         <AnimatePresence>
             {!isExiting && 
-            (<div className="flex flex-col w-full h-svh px-4 py-6 gap-24 items-center">
+            (<div className="flex flex-col w-full h-svh px-4 sm:px-10 lg:px-20 xl:px-28 2xl:px-44 py-2 min-[412px]:py-6 gap-7 min-[390px]:gap-24 sm:gap-14 2xl:gap-7 items-center">
                 <motion.div 
                     className="w-full"
                     initial={{opacity: 0, scale: 0}}
@@ -86,7 +85,7 @@ export default function GamePage({pokemonArray, shuffleCards, setGameLoad, setIs
                     score={score}/>
                 </motion.div>
                 <motion.div 
-                className="self-center flex flex-wrap justify-center gap-2"
+                className="self-center flex sm:grid sm:grid-cols-3 flex-wrap justify-center gap-2 sm:gap-4"
                     initial={{opacity: 0, scale: 0}}
                     animate={firstAnimComplete && {opacity: 1, scale: [0, 1, 1.05, 1.02, 1]}}
                     transition={{duration: 0.7}}
@@ -103,25 +102,26 @@ export default function GamePage({pokemonArray, shuffleCards, setGameLoad, setIs
                 })}
                 </motion.div>
                 <motion.div 
-                className="-mt-16 flex gap-2"
+                className="-mt-3 min-[390px]:-mt-16 sm:-mt-5 2xl:-mt-3 flex gap-2"
                 initial={{opacity: 0, scale: 0}}
                 animate={secondAnimComplete && {opacity: 1, scale: [0, 1, 1.05, 1.02, 1]}}
                 transition={{duration: 0.7}}
                 exit={{opacity: 0, scale: 0, transition: {duration: 0.3}}}>
-                    <div className="text-[#D1CCE3] ml-10 font-fredoka bg-black bg-opacity-80 px-5 py-2 rounded-xl font-semibold text-lg ">
+                    <div className="text-[#D1CCE3] ml-10 font-fredoka bg-black bg-opacity-80 px-5 sm:px-7 py-2 sm:py-3 rounded-xl font-semibold min-[390px]:text-lg sm:text-xl ">
                         <span>{score} </span>/ <span>{roundToPlay}</span>
                     </div>
                     <div 
-                        className="text-[#D1CCE3] cursor-pointer font-fredoka bg-black bg-opacity-80 flex justify-center items-center px-4 rounded-full font-semibold text-lg "
+                        className="text-[#D1CCE3] cursor-pointer font-fredoka bg-black bg-opacity-80 flex justify-center items-center px-4 sm:px-5 rounded-full font-semibold min-[390px]:text-lg sm:text-xl"
                         data-tooltip-id="help"
                         data-tooltip-content="Don't click on the same card twice!"
-                        data-tooltip-place="bottom">
+                        data-tooltip-place="top">
                         ?
                         <Tooltip 
                             id="help"
                             style={{
                                 backgroundColor: "rgba(0, 0, 0, 0.9)",
-                                color: "#D1CCE3"   
+                                color: "#D1CCE3",
+                                zIndex: 1   
                             }}/>
                     </div>
                     
