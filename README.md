@@ -4,6 +4,12 @@
 ___
 
 ### How it works?
+<div float="center">
+  <img src="pixel1.jpg" alt="home Page of the Game" width="200" height="420">
+<img src="pixel2.jpg" alt="home Page of the Game" width="200" height="420">
+</div>
+
+
 This Card Memory Game works in an intuitive UX-Driven way. A sample is given in the images above.  
 After deciding the Generation, aka the Pokemon Region, the difficulty of the game must be decided.  
 - Easy: 6 cards show up indicating 6 rounds to win the game.
